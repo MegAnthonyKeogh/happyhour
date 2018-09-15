@@ -42,6 +42,11 @@ require("./routing/apiRoutes")(app);
 require("./routing/htmlRoutes.js")(app);
 
 
+var ip = require("ip");
+console.log("++++++++++++ ip addresssss ++++++++++++++++++++++");
+console.log( ip.address() );
+console.log("++++++++++++ ip addresssss ++++++++++++++++++++++");
+
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
