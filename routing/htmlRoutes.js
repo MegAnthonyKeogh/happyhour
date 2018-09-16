@@ -34,7 +34,9 @@ module.exports = function(app) {
    //NEW CODE START//
    console.log(chosenVenue);
 
-   var barAddress = chosenVenue[0].location.address;
+   var barAddress = chosenVenue[0].location.address 
+                    + "%20"+ chosenVenue[0].location.city
+                    + "%20"+ chosenVenue[0].location.state
    var barAddressArray = barAddress.split("");
   
       for (let i = 0; i < barAddressArray.length; i++) {
@@ -42,13 +44,13 @@ module.exports = function(app) {
         if (barAddressArray[i] === " ") {
           barAddressArray.splice(i, 1, "%20");
           barAddress = barAddressArray.join("");
-          console.log(barAddress);
+          //console.log(barAddress);
 
         }
       };
-
+      console.log("************************" + barAddress);
    var embedMap = "https://www.google.com/maps/embed/v1/directions?origin=";
-   var currentLocation = "3401%20grays%20ferry%20ave" + "&destination=";
+   var currentLocation = barAddress + "&destination=";
    var key = "&key=" + process.env.EMBED_MAP_KEY;
 
    var src = embedMap + currentLocation + barAddress + key;
